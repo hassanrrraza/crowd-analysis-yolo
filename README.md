@@ -42,11 +42,8 @@ An advanced crowd analysis system for Peshawar's Bus Rapid Transit (BRT) using Y
 ## 🖼️ Visualization Interface
 
 <p align="center">
-  <!-- Note: Add a screenshot of your interface here -->
-  <img src="https://github.com/hassanrrraza/crowd-analysis-yolo/raw/main/data/images/interface_preview.jpg" width="700" alt="Interface Preview">
+  <img src="https://github.com/hassanrrraza/crowd-analysis-yolo/raw/main/data/images/interface_preview.PNG" width="700" alt="Interface Preview">
 </p>
-
-> **Note:** If the interface preview image is not displaying, you'll need to add a screenshot of your application to the repository at the path shown above.
 
 The system features a modern and informative visualization interface designed for effective crowd monitoring:
 
