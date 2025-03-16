@@ -1,0 +1,6 @@
+train: ../freedomtech/images/training
+val: ../freedomtech/labels/validation
+#number of classes
+nc: 1
+#class names
+names: ['surfing']
