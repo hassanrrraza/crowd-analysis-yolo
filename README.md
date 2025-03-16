@@ -1,97 +1,100 @@
-## Author
+# BRT Crowd Analysis System
 
-- **Hassan Raza**
-- Email: hassan2056764@gmail.com
-- LinkedIn: [https://www.linkedin.com/in/hassanrrraza/](https://www.linkedin.com/in/hassanrrraza/)
-- GitHub: [https://github.com/hassanrrraza](https://github.com/hassanrrraza)
+![Python](https://img.shields.io/badge/Python-3.7%2B-blue)
+![YOLOv8](https://img.shields.io/badge/YOLOv8-Latest-brightgreen)
+![OpenCV](https://img.shields.io/badge/OpenCV-4.5%2B-green)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-# Crowd Analysis using YOLOv8
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ultralytics/assets/main/yolov8/banner-yolov8.png" width="800">
+</p>
 
-A computer vision project for crowd analysis and people counting using YOLOv8 object detection.
+## 📋 Overview
+
+An advanced crowd analysis system for Peshawar's Bus Rapid Transit (BRT) using YOLOv8 and computer vision techniques. The system performs real-time crowd detection and monitoring to improve safety and efficiency in BRT stations.
+
+- **Accuracy**: 98% in detecting and counting people within specified regions of interest
+- **Purpose**: Enables proactive crowd management by providing accurate monitoring data
+- **Application**: Optimizes resource allocation and prevents overcrowding situations
 
 > **Note:** The BRT video footage used in this project is strictly for educational and research purposes only. The footage should not be shared online or used in any misleading way. All rights to the footage belong to their respective owners.
 
+## ✨ Key Features
 
-## Overview
+- **Real-time Detection & Counting**
+  - Accurate people detection using YOLOv8
+  - Custom region of interest (ROI) definition
+  - Threshold-based crowd monitoring
 
-This project implements an advanced crowd analysis system for Peshawar's Bus Rapid Transit (BRT) using YOLOv8 and computer vision techniques. The system performs real-time crowd detection and monitoring to improve safety and efficiency in BRT stations. Using custom-trained models on BRT station imagery, it achieves 98% accuracy in detecting and counting people within specified regions of interest. The solution enables proactive crowd management by providing accurate monitoring data to optimize resource allocation and prevent overcrowding situations.
-
-## Features
-
-- Real-time people detection and counting using YOLOv8
-- Custom area definition for zone-based counting
-- Advanced visualization interface:
-  - Modern UI with professional header and footer
-  - Real-time counting bar with color-coded status indicators
-  - Dynamic threshold monitoring with percentage display
-  - Comprehensive statistics panel showing:
-    - Current count
-    - Maximum count
-    - Average count
-    - FPS monitoring
-    - Runtime tracking
-  - Interactive mini-graph displaying count history
-  - Semi-transparent ROI overlay for clear zone visualization
+- **Advanced Visualization Interface**
+  - Modern UI with professional header/footer
+  - Color-coded status indicators (Normal/Warning/Critical)
+  - Comprehensive statistics panel
+  - Real-time count history graph
+  - Semi-transparent ROI visualization
   - Elegant detection boxes with corner highlights
-  - Professional timestamp and copyright information
-- Frame extraction utility for dataset creation
-- Support for custom trained models
 
-## Project Structure
+- **Developer Tools**
+  - Frame extraction utility for dataset creation
+  - Support for custom trained models
+  - Detailed performance metrics
 
-```
-crowd-analysis-yolo/
-├── data/
-│   ├── videos/         # Video files for analysis
-│   ├── images/         # Extracted frames and training images
-│   ├── labels/         # Annotation files for training
-│   └── coco1.txt       # Class names file
-├── models/             # Trained YOLO model files
-├── notebooks/          # Jupyter notebooks for experimentation
-├── src/
-│   ├── people_counter.py  # Main people counting module
-│   ├── utils/
-│   │   └── image_extractor.py   # Utility for extracting frames
-│   └── models/         # Model loading and management
-├── requirements.txt    # Project dependencies
-└── README.md           # Project documentation
-```
+## 🖼️ Visualization Interface
 
-## Installation
+<p align="center">
+  <!-- Note: Add a screenshot of your interface here -->
+  <img src="https://github.com/hassanrrraza/crowd-analysis-yolo/raw/main/data/images/interface_preview.jpg" width="700" alt="Interface Preview">
+</p>
 
-1. Clone the repository:
-   ```
+> **Note:** If the interface preview image is not displaying, you'll need to add a screenshot of your application to the repository at the path shown above.
+
+The system features a modern and informative visualization interface designed for effective crowd monitoring:
+
+### Display Elements
+
+| Component | Description |
+|-----------|-------------|
+| **Header Bar** | Professional title display with clean, modern design |
+| **Counting Information** | Real-time count with color-coded progress bars |
+| **Statistics Panel** | Shows current/max/avg counts, FPS, and runtime |
+| **Count History Graph** | Real-time mini-graph showing count trends |
+| **Detection Visualization** | Elegant bounding boxes with corner highlights |
+| **Footer Information** | Timestamp and copyright information |
+
+### Color Scheme
+
+| Status | Color Code | Usage |
+|--------|------------|-------|
+| Normal | Green (#00FF00) | Below 60% of threshold |
+| Warning | Orange (#FFA500) | Between 60-90% of threshold |
+| Critical | Red (#FF0000) | Above 90% of threshold |
+| Accent | Gold (#FFCC00) | UI highlights and borders |
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Python 3.7+
+- CUDA-compatible GPU (recommended for real-time processing)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
    git clone https://github.com/hassanrrraza/crowd-analysis-yolo.git
    cd crowd-analysis-yolo
    ```
 
-2. Install required packages:
-   ```
+2. **Install dependencies**
+   ```bash
    pip install -r requirements.txt
    ```
 
-3. Download the model weights (if not already included):
+3. **Download model weights** (if not included)
    - Place YOLOv8 weights files in the `models/` directory
    - Or use the included `best.pt` custom trained model
 
-## Usage
-
-### Running People Counter
-
-```python
-from src.people_counter import PeopleCounter
-
-# Initialize the counter with model and video paths
-counter = PeopleCounter(
-    model_path="models/best.pt",
-    video_path="data/videos/cr.mp4",
-    class_file="data/coco1.txt",
-    threshold=40
-)
-
-# Run the counter with visualization
-counter.run(display=True)
-```
+## 💻 Usage
 
 ### Command Line Interface
 
@@ -102,84 +105,82 @@ python main.py
 # With custom parameters
 python main.py --model best.pt --video cr.mp4 --threshold 50
 
-# Additional options
-python main.py --help  # Show all available options
+# Show all available options
+python main.py --help
 ```
 
-The visualization interface will automatically adjust to your screen resolution while maintaining the 16:9 aspect ratio for optimal viewing.
+### Python API
 
-### Extracting Frames from Video
+```python
+from src.people_counter import PeopleCounter
+
+# Initialize the counter
+counter = PeopleCounter(
+    model_path="models/best.pt",
+    video_path="data/videos/cr.mp4",
+    class_file="data/coco1.txt",
+    threshold=40
+)
+
+# Run with visualization
+counter.run(display=True)
+```
+
+### Extracting Frames
 
 ```bash
 python src/utils/image_extractor.py --video data/videos/cr.mp4 --output data/images/extracted --max-frames 200
 ```
 
-## Training Custom Models
+## 📁 Project Structure
 
-For custom model training, refer to the Jupyter notebook `notebooks/yolov8_object_detection_on_custom_dataset.ipynb` which provides step-by-step instructions.
+```
+crowd-analysis-yolo/
+├── data/                  # Data files
+│   ├── videos/            # Video files for analysis
+│   ├── images/            # Extracted frames and training images
+│   ├── labels/            # Annotation files for training
+│   └── coco1.txt          # Class names file
+├── models/                # Trained YOLO model files
+├── notebooks/             # Jupyter notebooks for experimentation
+├── src/                   # Source code
+│   ├── people_counter.py  # Main people counting module
+│   ├── utils/             # Utility functions
+│   │   └── image_extractor.py  # Frame extraction utility
+│   └── models/            # Model loading and management
+├── requirements.txt       # Project dependencies
+└── README.md              # Project documentation
+```
 
-## Requirements
+## 🔧 Training Custom Models
 
-- Python 3.7+
-- OpenCV
-- Pandas
-- NumPy
-- Ultralytics YOLOv5/YOLOv8
-- CVZone
+For custom model training, refer to the Jupyter notebook `notebooks/yolov8_object_detection_on_custom_dataset.ipynb` which provides step-by-step instructions for:
 
-## Acknowledgments
+1. Preparing your dataset
+2. Configuring training parameters
+3. Training the model
+4. Evaluating performance
+5. Exporting for inference
+
+## 🙏 Acknowledgments
 
 - [Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics)
-- [CVZone](https://github.com/cvzone/cvzone) 
+- [CVZone](https://github.com/cvzone/cvzone)
+- [OpenCV](https://opencv.org/)
 
-## Copyright
+## 👤 Author
+
+<img src="https://github.com/hassanrrraza.png" width="100px" style="border-radius:50%">
+
+**Hassan Raza**
+- Email: [hassan2056764@gmail.com](mailto:hassan2056764@gmail.com)
+- LinkedIn: [hassanrrraza](https://www.linkedin.com/in/hassanrrraza/)
+- GitHub: [hassanrrraza](https://github.com/hassanrrraza)
+
+## 📄 License
 
 © 2025 Hassan Raza. All rights reserved.
 
-This project, "People Counter using YOLOv8", was developed and implemented by Hassan Raza. You are free to use, modify, and distribute this code in your work, provided that you give appropriate credit to the original author. This project demonstrates the practical application of computer vision and deep learning techniques for real-time people counting and tracking.
+This project is available for use under the MIT license. You are free to use, modify, and distribute this code in your work, provided that you give appropriate credit to the original author.
 
-If you use this project in your work, please cite it as: "People Counter using YOLOv8 by Hassan Raza". For any questions or collaborations, feel free to reach out to the author.
-
-## Visualization Interface
-
-The system features a modern and informative visualization interface designed for effective crowd monitoring:
-
-### Main Display Elements
-1. **Header Bar**
-   - Professional title display
-   - Clean, modern design with accent highlights
-
-2. **Counting Information**
-   - Real-time count display with progress bar
-   - Dynamic threshold percentage indicator
-   - Color-coded status indicators (green for normal, orange for warning, red for critical)
-
-3. **Statistics Panel**
-   - Current and maximum crowd counts
-   - Running average count
-   - Real-time FPS monitoring
-   - System runtime tracking
-   - Clean, semi-transparent background for better visibility
-
-4. **Count History Graph**
-   - Real-time mini-graph showing count trends
-   - Grid lines for better readability
-   - Automatic scaling based on maximum counts
-
-5. **Detection Visualization**
-   - Elegant bounding boxes with corner highlights
-   - Semi-transparent ROI overlay
-   - Clear zone demarcation
-
-6. **Footer Information**
-   - Current date and time
-   - Copyright information
-   - Professional layout with consistent styling
-
-### Color Scheme
-- Normal Status: Green (#00FF00)
-- Warning Status: Orange (#FFA500)
-- Critical Status: Red (#FF0000)
-- Accent Color: Gold (#FFCC00)
-- Text Background: Dark Gray (#2C2C2C)
-- Border Elements: Light Gray (#B4B4B4)
+If you use this project in your work, please cite it as: "BRT Crowd Analysis System using YOLOv8 by Hassan Raza".
