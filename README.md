@@ -177,7 +177,6 @@ For custom model training, refer to the Jupyter notebook `notebooks/yolov8_objec
 ## 📄 License
 
 © 2025 Hassan Raza. All rights reserved.
-
 This project is available for use under the MIT license. You are free to use, modify, and distribute this code in your work, provided that you give appropriate credit to the original author.
 
 If you use this project in your work, please cite it as: "BRT Crowd Analysis System using YOLOv8 by Hassan Raza".
