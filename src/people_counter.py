@@ -40,7 +40,7 @@ class PeopleCounter:
         # Color schemes
         self.colors = {
             'normal': (0, 255, 0),       # Green
-            'warning': (40, 40, 255),    # Light red
+            'warning': (0, 255, 0),    # Light red
             'critical': (0, 0, 255),     # Deep red
             'text_bg': (44, 44, 44),     # Dark gray
             'accent': (255, 204, 0),     # Accent color (gold)
@@ -233,7 +233,7 @@ class PeopleCounter:
         graph_width = 200
         graph_height = 100
         graph_x = frame.shape[1] - graph_width - 20
-        graph_y = frame.shape[0] - graph_height - 40  # Moved up to avoid footer overlap
+        graph_y = frame.shape[0] - graph_height - 30  # Moved up to avoid footer overlap
         
         # Draw semi-transparent background
         overlay = frame.copy()
@@ -247,7 +247,7 @@ class PeopleCounter:
         
         # Add title with more space below it
         title_x = graph_x + 10
-        title_y = graph_y + 15  # Moved up slightly
+        title_y = graph_y + 23  # Moved up slightly
         cv2.putText(frame, "COUNT HISTORY", (title_x, title_y), 
                   cv2.FONT_HERSHEY_SIMPLEX, 0.6, self.colors['accent'], 1)
         
