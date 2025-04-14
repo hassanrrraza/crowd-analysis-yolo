@@ -40,8 +40,8 @@ class PeopleCounter:
         # Color schemes
         self.colors = {
             'normal': (0, 255, 0),       # Green
-            'warning': (0, 165, 255),    # Orange
-            'critical': (0, 0, 255),     # Red
+            'warning': (40, 40, 255),    # Light red
+            'critical': (0, 0, 255),     # Deep red
             'text_bg': (44, 44, 44),     # Dark gray
             'accent': (255, 204, 0),     # Accent color (gold)
             'border': (180, 180, 180),   # Border color
