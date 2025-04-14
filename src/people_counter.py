@@ -34,7 +34,8 @@ class PeopleCounter:
             self.class_list = data.split("\n")
         
         # Define the polygon area for counting
-        self.area1 = [(463, 147), (426, 460), (89, 428), (14, 222), (249, 105)]
+        # self.area1 = [(463, 147), (426, 460), (89, 428), (14, 222), (249, 105)]
+        self.area1 = [(827, 155), (1261, 457), (774, 695), (610, 193)]
         
         # Color schemes
         self.colors = {
@@ -244,31 +245,35 @@ class PeopleCounter:
         cv2.rectangle(frame, (graph_x, graph_y), (graph_x + graph_width, graph_y + graph_height), 
                     self.colors['accent'], 1)
         
-        # Add title
+        # Add title with more space below it
         title_x = graph_x + 10
-        title_y = graph_y + 20
+        title_y = graph_y + 15  # Moved up slightly
         cv2.putText(frame, "COUNT HISTORY", (title_x, title_y), 
                   cv2.FONT_HERSHEY_SIMPLEX, 0.6, self.colors['accent'], 1)
         
-        # Draw grid
+        # Adjust the graph area to start below the title
+        graph_area_start_y = title_y + 15  # Add padding after title
+        usable_height = graph_height - (graph_area_start_y - graph_y)
+        
+        # Draw grid with adjusted height
         max_val = max(max(self.count_history), self.threshold)
-        grid_step_y = graph_height / 4
+        grid_step_y = usable_height / 4
         
         for i in range(1, 4):
             y_pos = int(graph_y + graph_height - i * grid_step_y)
-            cv2.line(frame, (graph_x, y_pos), (graph_x + graph_width, y_pos), 
+            cv2.line(frame, (graph_x + 25, y_pos), (graph_x + graph_width, y_pos), 
                    self.colors['grid'], 1)
             val = int((i / 4) * max_val)
-            cv2.putText(frame, str(val), (graph_x - 25, y_pos + 5), 
+            cv2.putText(frame, str(val), (graph_x + 5, y_pos + 5), 
                       cv2.FONT_HERSHEY_SIMPLEX, 0.4, (200, 200, 200), 1)
         
-        # Draw graph
+        # Draw graph with adjusted coordinates
         points = []
         history_to_plot = self.count_history[-min(len(self.count_history), graph_width):]
         
         for i, count in enumerate(history_to_plot):
-            x = graph_x + i * (graph_width / len(history_to_plot))
-            y = graph_y + graph_height - (count / max_val) * graph_height
+            x = graph_x + 25 + i * ((graph_width - 25) / len(history_to_plot))  # Adjust x to start after labels
+            y = graph_y + graph_height - (count / max_val) * usable_height
             points.append((int(x), int(y)))
         
         # Draw line graph
