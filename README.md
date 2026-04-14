@@ -14,6 +14,10 @@ This repository accompanies peer-reviewed work on IEEE Xplore:
 
 If you use this project in academic or technical publications, please cite the paper linked above.
 
+<p align="center">
+  <img src="https://github.com/hassanrrraza/crowd-analysis-yolo/raw/main/data/images/interface_preview.PNG" width="700" alt="Interface Preview">
+</p>
+
 ---
 
 ## 📋 Overview
@@ -46,13 +50,6 @@ An advanced crowd analysis system for Peshawar's Bus Rapid Transit (BRT) using Y
   - Support for custom trained models
   - Detailed performance metrics
 
-## 🖼️ Visualization Interface
-
-<p align="center">
-  <img src="https://github.com/hassanrrraza/crowd-analysis-yolo/raw/main/data/images/interface_preview.PNG" width="700" alt="Interface Preview">
-</p>
-
-The system features a modern and informative visualization interface designed for effective crowd monitoring:
 
 ### Display Elements
 
