@@ -5,9 +5,16 @@
 ![OpenCV](https://img.shields.io/badge/OpenCV-4.5%2B-green)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/ultralytics/assets/main/yolov8/banner-yolov8.png" width="800">
-</p>
+### Publication
+
+This repository accompanies peer-reviewed work on IEEE Xplore:
+
+- **Research paper:** [IEEE Xplore document 11204071](https://ieeexplore.ieee.org/document/11204071)
+- **Author profile:** [Hassan Raza on IEEE Xplore](https://ieeexplore.ieee.org/author/710100950356345)
+
+If you use this project in academic or technical publications, please cite the paper linked above.
+
+---
 
 ## 📋 Overview
 
@@ -173,10 +180,11 @@ For custom model training, refer to the Jupyter notebook `notebooks/yolov8_objec
 - Email: [hassan2056764@gmail.com](mailto:hassan2056764@gmail.com)
 - LinkedIn: [hassanrrraza](https://www.linkedin.com/in/hassanrrraza/)
 - GitHub: [hassanrrraza](https://github.com/hassanrrraza)
+- IEEE Xplore: [Author profile](https://ieeexplore.ieee.org/author/710100950356345)
 
 ## 📄 License
 
-© 2025 Hassan Raza. All rights reserved.
+© 2026 Hassan Raza. All rights reserved.
 This project is available for use under the MIT license. You are free to use, modify, and distribute this code in your work, provided that you give appropriate credit to the original author.
 
-If you use this project in your work, please cite it as: "BRT Crowd Analysis System using YOLOv8 by Hassan Raza".
+For formal citation, use the IEEE Xplore publication: [https://ieeexplore.ieee.org/document/11204071](https://ieeexplore.ieee.org/document/11204071).
