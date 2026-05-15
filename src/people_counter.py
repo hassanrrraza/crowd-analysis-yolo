@@ -53,6 +53,47 @@ class PeopleCounter:
         self.count_history = []
         self.max_history_length = 100
 
+        # 鼠标事件相关
+        self.drawing = False  # 是否正在拖动
+        self.current_point_index = -1  # 当前拖动的顶点索引
+        self.display_frame = None  # 用于鼠标回调的帧
+
+    def mouse_callback(self, event, x, y, flags, param):
+        """
+        鼠标回调函数，用于处理鼠标事件。
+
+        参数:
+        - event: OpenCV传递的鼠标事件类型，如点击、移动等。
+        - x, y: 鼠标事件发生的坐标位置。
+        - flags: 鼠标事件的标志，保留参数，未使用。
+        - param: 用户定义的传递到回调函数的参数，未使用。
+
+        返回值: 无
+
+        本函数主要用于响应鼠标事件，以实现对特定区域顶点的拖动功能。
+        """
+        # 检查是否有显示帧，如果没有则直接返回，不做任何操作。
+        if self.display_frame is None:
+            return
+
+        # 当检测到鼠标左键按下事件时，检查是否点击在区域1的某个顶点附近。
+        if event == cv2.EVENT_LBUTTONDOWN:
+            # 遍历区域1的所有顶点。
+            for i, point in enumerate(self.area1):
+                # 如果鼠标点击位置接近某个顶点（误差范围内），则开始记录拖动操作。
+                if abs(x - point[0]) < 10 and abs(y - point[1]) < 10:
+                    self.drawing = True
+                    self.current_point_index = i
+                    break
+        # 当鼠标移动时，如果正在拖动某个顶点，则更新该顶点的位置。
+        elif event == cv2.EVENT_MOUSEMOVE:
+            if self.drawing:
+                self.area1[self.current_point_index] = (x, y)
+        # 当检测到鼠标左键释放事件时，结束拖动操作，并重置当前顶点索引。
+        elif event == cv2.EVENT_LBUTTONUP:
+            self.drawing = False
+            self.current_point_index = -1
+
     def get_crowd_status(self, current_count):
         """Determine crowd status based on the current count and threshold."""
         percentage = (current_count / self.threshold) * 100
@@ -340,6 +381,7 @@ class PeopleCounter:
         if display:
             cv2.namedWindow('Crowd Analysis', cv2.WINDOW_NORMAL)
             cv2.resizeWindow('Crowd Analysis', 1280, 720)
+            cv2.setMouseCallback('Crowd Analysis', self.mouse_callback)
         
         cap = cv2.VideoCapture(self.video_path)
         
@@ -385,9 +427,14 @@ class PeopleCounter:
             if display:
                 # Create clean frame first
                 display_frame = frame.copy()
+                self.display_frame = display_frame
                 
                 # Draw stylized region of interest polygon
                 cv2.polylines(display_frame, [np.array(self.area1, np.int32)], True, self.colors['polygon'], 2)
+
+                # 绘制多边形顶点
+                for point in self.area1:
+                    cv2.circle(display_frame, point, 5, self.colors['accent'], -1)
                 
                 # Add a transparent overlay to highlight the counting zone
                 overlay = display_frame.copy()
