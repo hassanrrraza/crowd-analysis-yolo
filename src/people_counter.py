@@ -294,21 +294,17 @@ class PeopleCounter:
             # Add diagonal corner lines for better visibility (also thinner)
             corner_length = min(20, w//4, h//4)  # Slightly shorter corners
             
-            # Top-left corner
-            cv2.line(frame, (x1, y1), (x1 + corner_length, y1), color, thickness)
-            cv2.line(frame, (x1, y1), (x1, y1 + corner_length), color, thickness)
-            
-            # Top-right corner
-            cv2.line(frame, (x1 + w, y1), (x1 + w - corner_length, y1), color, thickness)
-            cv2.line(frame, (x1 + w, y1), (x1 + w, y1 + corner_length), color, thickness)
-            
-            # Bottom-left corner
-            cv2.line(frame, (x1, y1 + h), (x1 + corner_length, y1 + h), color, thickness)
-            cv2.line(frame, (x1, y1 + h), (x1, y1 + h - corner_length), color, thickness)
-            
-            # Bottom-right corner
-            cv2.line(frame, (x1 + w, y1 + h), (x1 + w - corner_length, y1 + h), color, thickness)
-            cv2.line(frame, (x1 + w, y1 + h), (x1 + w, y1 + h - corner_length), color, thickness)
+            cv2.line(frame, (x1-2, y1-2), (x1 + corner_length-2, y1-2), color, thickness)
+            cv2.line(frame, (x1-2, y1-2), (x1-2, y1 + corner_length-2), color, thickness)
+
+            cv2.line(frame, (x1+2 + w, y1-2), (x1+2 + w - corner_length, y1-2), color, thickness)
+            cv2.line(frame, (x1+2 + w, y1-2), (x1+2 + w, y1-2 + corner_length), color, thickness)
+
+            cv2.line(frame, (x1-2, y1+2 + h), (x1-2 + corner_length, y1+2 + h), color, thickness)
+            cv2.line(frame, (x1-2, y1+2 + h), (x1-2, y1+2 + h - corner_length), color, thickness)
+
+            cv2.line(frame, (x1+2 + w, y1+2 + h), (x1+2 + w - corner_length, y1+2 + h), color, thickness)
+            cv2.line(frame, (x1+2 + w, y1+2 + h), (x1+2 + w, y1+2 + h - corner_length), color, thickness)
 
     def draw_header(self, frame):
         """Draw a header with title and basic info."""
